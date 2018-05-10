@@ -1,16 +1,15 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
-import { AppComponent } from './app.component';
+import { JokeComponent } from './app.component';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
-  imports: [
-    BrowserModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+  declarations: [JokeComponent],
+  imports: [BrowserModule],
+  providers: [AppModule],
+  bootstrap: [JokeComponent]
 })
+ 
 export class AppModule { }
+
+
+console.error()
