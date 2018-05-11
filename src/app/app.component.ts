@@ -15,40 +15,45 @@ import {BrowserModule} from "@angular/platform-browser";
 import {Component, NgModule} from "@angular/core";
 
 
+export class Joke {
+  jokes: Joke[];
+    public setup: string;
+    public punchline: string;
+    public hide: boolean;
+
+  constructor(setup: string, punchline: string){
+    this.setup = setup;
+    this.punchline = punchline;
+    this.hide = true;
+  }
+
+  toggle(joke){
+    joke.hide= !joke.hide;
+  }
+
+}
+
 @Component({
   selector: 'joke-list',
   template:
             `
-            <div class=" card card-block"
-              *ngFor="let joke of jokes">
-              <h4 class="card-title">{{joke.setup}}</h4>
-              <p class="card-text" [hidden]=joke.hide>{{joke.punchline}}</p>
-              <a class="btn btn-danger" (click)="toggle(joke)">Tell Me</a>
+            <div class="card card-block"
+              *ngFor="let joke of jokes" class="container">
+              <h4 class="card-title"> {{joke.setup}} </h4>
+              <p class="card-text" [hidden]=joke.hide> {{joke.punchline}} </p>
+              <a class="btn btn-info" (click)="toggle(joke)"> Tell Me </a>
             </div>
             `
 })
 
-
 export class JokeListComponent {
-  jokes: Object[];
-  
+  jokes: Joke[];
+
   constructor(){
     this.jokes = [
-      {
-        setup: "What did the cheese sat when it looked in the mirror?",
-        punchline: "Hello (Halloumi)",
-        hide: true
-      },
-      {
-        setup: "What kind of cheese do you use to disguise a small horse?",
-        punchline: "Mask-a-pony (Mascarpone)",
-        hide: true
-      },
-      {
-        setup: "A kid threw a lump of cheddar at me",
-        punchline: "I thougt 'that's not very mature'",
-        hide: true
-      }
+      new Joke("What did the cheese say when it looked in the mirror?", "Hello-me(Halloumi)"),
+      new Joke("What kind of cheese do you use to disguise a small horse?", "Mask-apony(Mascarpone)"),
+      new Joke("A kid threw a lump of cheddar at me", "I thought ‘That’s not verymature’"),
     ];
   }
   toggle(joke){
