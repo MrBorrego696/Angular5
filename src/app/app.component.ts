@@ -32,7 +32,7 @@ class Joke {
               <div class="form-group">
                 <input type="text" class="form-control" placeholder="Enter the punchline" #punchline>
               </div>
-              <button type="button" class="btn btn-success" (click)="createJoke(setup.value, punchline.value)">Create</button>
+              <button type="button" class="btn btn-success btn-block" (click)="createJoke(setup.value, punchline.value)">Create</button>
             </div>
             `
 })
@@ -51,7 +51,7 @@ export class JokeFormComponent {
             <div class="card card-block">
               <h1 class="card-title">{{data.setup}}</h1>
               <p class="card-text" [hidden]="data.hide">{{data.punchline}}</p>
-              <a (click)="data.toggle()" class="btn btn-info">
+              <a (click)="data.toggle()" class="btn btn-info btn-xs">
               Tell Me
               </a>
             </div>
